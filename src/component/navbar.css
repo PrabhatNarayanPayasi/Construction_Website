@@ -1,0 +1,191 @@
+/* ========== NAVBAR STYLES ========== */
+.navbar {
+  background-color: #1a1a2e;
+  color: white;
+  padding: 0.75rem 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navbarContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-img {
+  height: 70px;
+  width: 200%;
+  border-radius:12px;
+  object-fit: cover;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+/* ========== NAV LINKS (Desktop) ========== */
+.navLinks {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navLink {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: #00bcd4;
+  transition: width 0.3s ease;
+}
+
+.navLink:hover {
+  color: #00bcd4;
+  font-weight: bold;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* ========== HAMBURGER ICON ========== */
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* ========== OVERLAY MENU (Mobile) ========== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+  transition: height 0.4s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.overlayActive {
+  height: 100vh;
+}
+
+/* Close Button */
+.closeBtn {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  font-size: 2.5rem;
+  background: none;
+  border: none;
+  color: #111;
+  cursor: pointer;
+}
+
+/* === Blue area for logo === */
+.overlayLogoWrapper {
+  background-color: #1e3a8a; /* Dark blue */
+  width: 100%;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.overlay-logo-img {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* === Pink area for menu === */
+.overlayMenu {
+  flex-grow: 1;
+  background-color: #ffc0cb; /* Light pink */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  margin: 0;
+  list-style: none;
+}
+
+/* Links style + underline hover animation */
+.overlayLink {
+  font-size: 1.8rem;
+  color: #111;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.overlayLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background-color: #111;
+  transition: width 0.3s ease;
+}
+
+.overlayLink:hover {
+  color: #00bcd4;
+}
+
+.overlayLink:hover::after {
+  width: 100%;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .logo-img{
+    width:100%;
+  }
+  .navLinks {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  
+}
