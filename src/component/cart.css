@@ -1,188 +1,126 @@
-/* General Styles for Card Wrapper */
-.card-wrapper {
-    perspective: 1500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #f4f4f4;
-    padding: 1rem; /* Added some padding for better spacing */
-  }
-  
-  /* Card Container */
+.cardWrapper {
+  perspective: 1500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.card {
+  width: 100%;
+  max-width: 800px;
+  height: 400px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s ease-in-out;
+  border-radius: 12px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+.cardFace {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.cardFront {
+  z-index: 2;
+}
+
+.cardBack {
+  transform: rotateY(180deg);
+}
+
+.cardLeft {
+  width: 50%;
+  height: 100%;
+}
+
+.cardLeft img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-right: 1px solid #ddd;
+}
+
+.cardRight {
+  width: 50%;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00bcd4;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.cardRight blockquote {
+  margin: 0;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Button Styling */
+.flipBtn {
+  margin-top: 1rem;
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #007acc;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.flipBtn:hover {
+  background-color: #005fa3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .card {
-    width: 90%;
-    max-width: 800px;
-    height: 400px;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 1s;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-    border-radius: 12px;
+    height: 500px;
   }
-  
-  /* Card Flipped State */
-  .card.flipped {
-    transform: rotateY(180deg);
+
+  .cardFace {
+    flex-direction: column;
   }
-  
-  /* Card Face Styles */
-  .card-face {
-    position: absolute;
+
+  .cardLeft,
+  .cardRight {
     width: 100%;
-    height: 100%;
-    display: flex;
-    border-radius: 12px;
-    backface-visibility: hidden;
-    overflow: hidden;
-    transition: box-shadow 0.3s ease;
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1),
-      0 20px 40px rgba(0, 0, 0, 0.2); /* Inner + Outer Shadow */
+    height: 50%;
   }
-  
-  /* Card Front (visible side) */
-  .card-front {
-    z-index: 2;
-    background: white;
-    display: flex;
-    flex-direction: row; /* Keep left and right side aligned horizontally */
-    align-items: stretch; /* Ensure both sections stretch to fit the card */
-    justify-content: space-between;
-    margin: 0; /* Remove any margins to eliminate gaps */
+
+  .cardRight {
+    font-size: 1.2rem;
   }
-  
-  /* Card Back (hidden side initially) */
-  .card-back {
-    transform: rotateY(180deg);
-    background: white;
-    display: flex;
-    flex-direction: row;
-    align-items: stretch; /* Stretch the content vertically */
-    justify-content: space-between;
-    margin: 0;
+}
+
+@media (max-width: 480px) {
+  .card {
+    height: 450px;
   }
-  
-  /* Left Side of the Card */
-  .card-left {
-    width: 50%; /* 50% width for the image */
-    height: 100%;
-    padding: 0; /* Remove padding to eliminate any gap */
-  }
-  
-  /* Image Styling on Left Side */
-  .card-left img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center; /* Ensures image is centered */
-    border-right: 1px solid #ccc;
-  }
-  
-  /* Right Side of the Card */
-  .card-right {
-    width: 50%; /* 50% width for the text */
-    padding: 1rem; /* Adjusted padding to avoid extra space */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #00bcd4;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 500;
-    text-align: center;
-    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.1);
-  }
-  
-  /* Flip Button */
-  .flip-btn {
-    padding: 12px 24px;
+
+  .cardRight {
     font-size: 1rem;
-    background-color: #007acc;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 8px 20px rgba(0, 122, 204, 0.4);
+    padding: 1rem;
   }
-  
-  /* Hover Effect on Flip Button */
-  .flip-btn:hover {
-    background-color: #005fa3;
-    transform: scale(1.05);
+
+  .flipBtn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
   }
-  
-  /* Mobile Responsiveness */
- /* Mobile Responsiveness */
- @media (max-width: 768px) {
-    /* Reduce card size */
-    .card {
-      height: 100%; /* Ensures card takes full height */
-    }
-  
-    /* Stack card content vertically */
-    .card-front, .card-back {
-      flex-direction: column; /* Stack content vertically */
-      justify-content: center; /* Center the content */
-    }
-  
-    /* Adjust image size */
-    .card-left {
-      height: 100%;
-    }
-  
-    .card-left img {
-      object-position: center; /* Ensure image is centered */
-      width: 100%; /* Ensure image occupies full width */
-      height: 100%;
-      margin-top: 7rem; /* Space above the image */
-    }
-  
-    /* Adjust text size and width of .card-right */
-    .card-right {
-      font-size: 1.2rem; /* Slightly smaller text for mobile */
-      padding: 1rem; /* Reduce padding */
-      text-align: center;
-      margin-bottom: 10rem;
-      height: 400px; /* Ensures the height of the text section */
-      width: 100%; /* Full width of the card */
-    }
-  
-    /* Reduce the size of the flip button */
-    .flip-btn {
-      padding: 10px 20px;
-      font-size: 0.9rem; /* Smaller font size for mobile */
-    }
-  }
-  
-  /* Extra Mobile Responsiveness for Small Screens (Portrait View) */
-  @media (max-width: 480px) {
-    .card {
-      width: 100%; /* Make card full width */
-      height: 400px; /* Reduce height further */
-    }
-  
-    .card-left, .card-right {
-      width: 100%; /* Stack the card sections vertically */
-      padding: 0; /* Remove padding to prevent unnecessary gaps */
-    }
-  
-    .card-left img {
-      height: 60%; /* Image will occupy 60% of the card height */
-      width: 100%; /* Ensure image takes the full width */
-    }
-  
-    .card-right {
-      font-size: 0.8rem; /* Smaller text for smaller screens */
-      padding: 0.8rem; /* Reduce padding */
-      text-align: center; /* Ensure the text is centered */
-    }
-  
-    .flip-btn {
-      padding: 8px 16px;
-      font-size: 0.8rem; /* Smaller font size */
-    }
-  }
-  
+}

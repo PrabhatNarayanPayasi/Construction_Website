@@ -1,52 +1,51 @@
-"use client";
-import { useState, useEffect } from "react";
-import "../component/cart.css";
+'use client';
 
-export default function AutoFlipCard() {
-  const [isFlipped, setIsFlipped] = useState(false);
+import { useState } from 'react';
+import '../component/cart.css';
 
-  useEffect(() => {
-    const interval = setTimeout(() => {
-      setIsFlipped((prev) => !prev);
-    } , 4000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleManualFlip = () => {
-    setIsFlipped((prev) => !prev);
-  };
+export default function FlipCard() {
+  const [flipped, setFlipped] = useState(false);
 
   return (
-    <div className="card-wrapper">
-      <div className={`card ${isFlipped ? "flipped" : ""}`}>
-        <div className="card-face card-front">
-          <div className="card-left">
+    <div className="cardWrapper">
+      <div
+        className={`card ${flipped ? 'flipped' : ''}`}
+        aria-label="Flip card showing quotes and images"
+      >
+        {/* Front Side */}
+        <div className="cardFace cardFront">
+          <div className="cardLeft">
             <img
-              src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"
-              alt="Quote Visual"
+              src="https://images.unsplash.com/photo-1612810806563-4cb8265db55f?w=600"
+              alt="Empowering vision"
+              loading="lazy"
             />
           </div>
-          <div className="card-right">
-            <h1>"Believe in yourself and all that you are."</h1>
+          <div className="cardRight">
+            <blockquote>“Empowering your vision with innovation.”</blockquote>
           </div>
         </div>
 
-        <div className="card-face card-back">
-          <div className="card-left">
+        {/* Back Side */}
+        <div className="cardFace cardBack">
+          <div className="cardLeft">
             <img
-              src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131"
-              alt="Quote Visual"
+              src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=600"
+              alt="Transforming ideas"
+              loading="lazy"
             />
           </div>
-          <div className="card-right">
-            <h1>"The future belongs to those who prepare for it today."</h1>
+          <div className="cardRight">
+            <blockquote>“Transforming ideas into reality.”</blockquote>
           </div>
         </div>
       </div>
 
-      {/* 👇 Manual flip button */}
-      <button className="flip-btn" onClick={handleManualFlip}>
+      <button
+        className="flipBtn"
+        onClick={() => setFlipped(!flipped)}
+        aria-pressed={flipped}
+      >
         Flip Card
       </button>
     </div>

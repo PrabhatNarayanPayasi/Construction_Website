@@ -6,6 +6,7 @@ import IndiaMap from "../app/map"; // Correct import for the map
 import { useRouter } from "next/navigation"; // Correct import for App Router
  
 import AutoFlipCard from "@/component/cart";
+import Link from "next/link";
 export default function Home() {
   const router = useRouter();
 
@@ -15,9 +16,9 @@ export default function Home() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = [
-    "https://plus.unsplash.com/premium_photo-1661914978519-52a11fe159a7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bG9nb3xlbnwwfHwwfHx8MA%3D%3D",
-    "https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bG9nb3xlbnwwfHwwfHx8MA%3D%3D",
-    "https://images.unsplash.com/photo-1612810806563-4cb8265db55f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bG9nb3xlbnwwfHwwfHx8MA%3D%3D",
+    "/img22.jpg",
+    "/img52.jpg",
+    "/img63.jpg",
   ];
 
   useEffect(() => {
@@ -62,14 +63,14 @@ export default function Home() {
       <AutoFlipCard/>
 
       <div className={styles.mapSection}>
-        <h2 style={{ textAlign: "center", marginBottom: "1rem" }}>Explore India</h2>
+        <h2 style={{ textAlign: "center", marginBottom: "1rem" }}> Cities Where we are Currently </h2>
         <IndiaMap />
       </div>
 
       <div className={styles.centerButtonWrapper}>
-  <button className={styles.centerButton} onClick={handleClick}>
-   Our Working Areas
-  </button>
+ 
+
+  <Link href="/services"  className={styles.centerButton}>Our Working Areas</Link>
 </div>
     </main>
   );
